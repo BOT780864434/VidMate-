@@ -1,0 +1,52 @@
+// التبديل بين الصفحات
+function navigateTo(pageId) {
+  document.querySelectorAll('.page').forEach(page => {
+    page.classList.remove('active');
+  });
+  document.getElementById(pageId).classList.add('active');
+}
+
+// التحكم بسرعة الفيديو
+const videoPlayer = document.getElementById("videoPlayer");
+const speedControl = document.getElementById("speedControl");
+speedControl.addEventListener("change", (e) => {
+  videoPlayer.playbackRate = parseFloat(e.target.value);
+});
+
+// تحميل الفيديو
+document.getElementById("downloadVideoBtn").addEventListener("click", () => {
+  const src = videoPlayer.querySelector("source").src;
+  if (!src) return alert("لا يوجد رابط فيديو.");
+  downloadFile(src, "video.mp4");
+});
+
+// تحويل الفيديو إلى صوت (مؤقت: يحول الامتداد فقط)
+document.getElementById("downloadAudioBtn").addEventListener("click", () => {
+  const src = videoPlayer.querySelector("source").src;
+  if (!src) return alert("لا يوجد فيديو لتحويله.");
+  const audioUrl = src.replace(/\.\w+$/, ".mp3");
+  downloadFile(audioUrl, "audio.mp3");
+});
+
+// دالة التحميل
+function downloadFile(url, filename) {
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = filename;
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+}
+
+// الوضع الليلي/النهاري
+const themeToggle = document.getElementById("themeToggle");
+themeToggle.addEventListener("change", (e) => {
+  document.body.classList.toggle("dark", e.target.checked);
+});
+
+// حفظ تفضيلات الوضع الليلي (اختياري – للتطوير)
+window.addEventListener("load", () => {
+  if (themeToggle.checked) {
+    document.body.classList.add("dark");
+  }
+});

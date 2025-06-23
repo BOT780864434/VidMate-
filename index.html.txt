@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>متصفح عبد الغني الصيراني</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- اسم متحرك -->
+  <div class="animated-header">
+    <h1>عبد الغني الصيراني</h1>
+  </div>
+
+  <!-- شريط تنقل -->
+  <nav class="navbar">
+    <button onclick="navigateTo('home')">الرئيسية</button>
+    <button onclick="navigateTo('settings')">الإعدادات</button>
+  </nav>
+
+  <!-- صفحة رئيسية -->
+  <section id="home" class="page active">
+    <video id="videoPlayer" controls crossorigin="anonymous" preload="metadata">
+      <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4" />
+      المتصفح لا يدعم تشغيل الفيديو.
+    </video>
+
+    <div class="controls">
+      <label>السرعة:
+        <select id="speedControl">
+          <option value="0.5">0.5x</option>
+          <option value="1" selected>1x</option>
+          <option value="1.5">1.5x</option>
+          <option value="2">2x</option>
+        </select>
+      </label>
+      <button id="downloadVideoBtn">تحميل الفيديو</button>
+      <button id="downloadAudioBtn">تحويل إلى صوت</button>
+    </div>
+  </section>
+
+  <!-- صفحة الإعدادات -->
+  <section id="settings" class="page">
+    <h2>الإعدادات</h2>
+    <label for="qualitySelect">جودة الفيديو:</label>
+    <select id="qualitySelect">
+      <option>1080p</option>
+      <option selected>720p</option>
+      <option>480p</option>
+      <option>360p</option>
+    </select>
+
+    <br><br>
+
+    <label for="themeToggle">الوضع الليلي:</label>
+    <input type="checkbox" id="themeToggle" />
+
+    <br><br>
+
+    <label for="langSelect">لغة الترجمة:</label>
+    <select id="langSelect">
+      <option selected>العربية</option>
+      <option>الإنجليزية</option>
+      <option>التركية</option>
+      <option>الإسبانية</option>
+    </select>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
